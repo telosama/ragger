@@ -7,22 +7,22 @@ name = "ragger"
 version = "0.1.0"
 description = "command line tool to RAG over multiple pieces of text"
 authors = [{ name = "Ian Griffin", email = "migriffin@disroot.org" }]
-license = "GPL-3.0"
+license = {file = "COPYING.md"}
+keywords = ["LLM", "RAG", "LangChain", "LangGraph", "OpenAI"]
 
 # Dependencies
 dependencies = [
-        "bs4"
-        "gradio"
-        "huggingface_hub"
-        "langchain"
-        "langchain-chroma"
-        "langchain-community"
-        "langchain-openai"
-        "langgraph"
-        "openai"
-        "pypdf==5.0.1"
-        "termcolor"
-        "tiktoken"
+        "bs4",
+        "huggingface_hub",
+        "langchain",
+        "langchain-chroma",
+        "langchain-community",
+        "langchain-openai",
+        "langgraph",
+        "openai",
+        "pypdf==5.0.1",
+        "termcolor",
+        "tiktoken",
 ]
 
 [project.scripts]

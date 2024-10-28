@@ -1,7 +1,7 @@
 bs4
-gradio
 huggingface_hub
 langchain
+langchain-chroma
 langchain-community
 langchain-openai
 langgraph

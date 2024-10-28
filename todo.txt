@@ -1,12 +1,12 @@
-x setup setup.py
-better code structure
-huggingface models availability
+async document loading
+toggleable rich text
 initial question argument
 no looping argument
-toggle rich text
+better code structure
+huggingface models availability
 UI
+x setup setup.py
 x setup arguments
-x rich text
 x multi-query retriever
 x add verbose argument
 x add model argument

@@ -7,7 +7,6 @@
 # You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
 
 import os
-import marko
 import mimetypes
 import re
 
@@ -201,13 +200,6 @@ def main():
         print(colored("A: ", "green", attrs=["reverse"]), parse_markdown(app.invoke({"input": question},
     config=config)["answer"]), end="\n\n")
 
-# We define a dict representing the state of the application.
-# This state has the same input and output keys as `rag_chain`.
-class State(TypedDict):
-    input: str
-    chat_history: Annotated[Sequence[BaseMessage], add_messages]
-    context: str
-    answer: str
 
 def parse_markdown(text):
     lines = text.splitlines()
@@ -224,22 +216,10 @@ def parse_markdown(text):
             continue
 
         # Check for headers
-        if line.startswith("# "):
-            level = len(line) - len(line.lstrip("#"))
-            header_text = line.lstrip("#").strip()
-            formatted_text += colored(header_text, "blue", attrs=["bold", "underline"]) + "\n"
-            continue
-        
-        if line.startswith("## "):
+        if line.startswith("#"):
             level = len(line) - len(line.lstrip("#"))
             header_text = line.lstrip("#").strip()
             formatted_text += colored(header_text, "blue", attrs=["bold"]) + "\n"
-            continue
-        
-        if line.startswith("### "):
-            level = len(line) - len(line.lstrip("#"))
-            header_text = line.lstrip("#").strip()
-            formatted_text += colored(header_text, "cyan", attrs=["bold"]) + "\n"
             continue
 
         # Check for blockquotes
@@ -250,17 +230,17 @@ def parse_markdown(text):
 
         # Check for tables (rows separated by "|")
         if "|" in line:
-            table_row = "\t| ".join(line.split("|")).strip()
+            table_row = "\t".join(line.split("|")).strip()
             formatted_text += table_row + "\n"
             continue
 
         # Inline formatting for bold, italic, and code (keeping the symbols)
         # Bold (**text** or __text__)
-        line = re.sub(r"[^\*_](\*\*|__)(.+?)(\*\*|__)[^\*_]", lambda m: colored(m.group(), attrs=["bold"]), line)
+        line = re.sub(r"(\*\*|__)(.*?)(\*\*|__)", lambda m: colored(m.group(1) + m.group(2) + m.group(3), attrs=["bold"]), line)
         # Italic (*text* or _text_)
-        line = re.sub(r"[^\*_](\*|_)([^\*_].+?[^\*_])(\*|_)[^\*_]", lambda m: colored(m.group(), attrs=["underline"]), line)
+        line = re.sub(r"(\*|_)(.*?)(\*|_)", lambda m: colored(m.group(1) + m.group(2) + m.group(3), attrs=["underline"]), line)
         # Inline code (`code`)
-        line = re.sub(r"[^\*_](`)(.+?)`[^\*_]", lambda m: colored(m.group() + "`", "green"), line)
+        line = re.sub(r"(`)(.*?)`", lambda m: colored(m.group(1) + m.group(2) + "`", "green"), line)
 
         # List items (bullets and numbers)
         # Bulleted list
@@ -272,6 +252,13 @@ def parse_markdown(text):
         formatted_text += line + "\n"
 
     return formatted_text
+
+
+class State(TypedDict):
+    input: str
+    chat_history: Annotated[Sequence[BaseMessage], add_messages]
+    context: str
+    answer: str
 
 if __name__ == "__main__":
     main()

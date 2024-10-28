@@ -1,0 +1,2 @@
+[console_scripts]
+ragger = ragger:main

@@ -1,0 +1,10 @@
+COPYING.md
+README.md
+pyproject.toml
+ragger.py
+ragger.egg-info/PKG-INFO
+ragger.egg-info/SOURCES.txt
+ragger.egg-info/dependency_links.txt
+ragger.egg-info/entry_points.txt
+ragger.egg-info/requires.txt
+ragger.egg-info/top_level.txt
