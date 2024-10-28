@@ -1,0 +1,12 @@
+bs4
+gradio
+huggingface_hub
+langchain
+langchain-chroma
+langchain-community
+langchain-openai
+langgraph
+openai
+pypdf==5.0.1
+termcolor
+tiktoken

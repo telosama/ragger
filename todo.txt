@@ -1,0 +1,13 @@
+x setup setup.py
+better code structure
+huggingface models availability
+initial question argument
+no looping argument
+toggle rich text
+UI
+x setup arguments
+x rich text
+x multi-query retriever
+x add verbose argument
+x add model argument
+x multi pdf
