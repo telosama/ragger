@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ragger"
+version = "0.1.0"
+description = "command line tool to RAG over multiple pieces of text"
+authors = [{ name = "Ian Griffin", email = "migriffin@disroot.org" }]
+license = "GPL-3.0"
+
+# Dependencies
+dependencies = [
+        "bs4"
+        "gradio"
+        "huggingface_hub"
+        "langchain"
+        "langchain-chroma"
+        "langchain-community"
+        "langchain-openai"
+        "langgraph"
+        "openai"
+        "pypdf==5.0.1"
+        "termcolor"
+        "tiktoken"
+]
+
+[project.scripts]
+ragger = "ragger:main"
