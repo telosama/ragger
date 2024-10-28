@@ -1,4 +1,4 @@
-Ragger
+RAGger
 ======
 ```ragger.py``` is a command line tool to RAG over multiple pieces of text, PDFs and websites using langchain and OpenAI.
 
@@ -7,6 +7,7 @@ The main repository is on ![git.telosama.xyz](https://git.telosama.xyz/iang/ragg
 ## Prerequisites
 Since this codebase uses OpenAI models, a OpenAI API key is needed.
 After obtaining an API key, set the environment variable OPENAI_API_KEY to the API key.
+This program is built on top of python 3.10
 
 ## Installation
 This program can be installed by cloning the repository and installing the package using pip:
