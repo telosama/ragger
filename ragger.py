@@ -7,7 +7,6 @@
 # You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
 
 import os
-import marko
 import mimetypes
 import re
 
@@ -59,7 +58,7 @@ def main():
     #
     
     loaders = {
-        "text/plain": lambda file: TextLoader(file).load(),
+        "text": lambda file: TextLoader(file).load(),
         "application/pdf": lambda file: PyPDFLoader(file).load(),
         "url": lambda file: WebBaseLoader(file).load(),
     }
@@ -81,6 +80,9 @@ def main():
         # detect filetype
         else:
             mimetype, _ = mimetypes.guess_type(path)
+            if mimetype.startswith("text/"):
+                mimetype = "text"
+
             if mimetype not in loaders:
                 raise ValueError("Unsupported file type: %s" % mimetype)
             else:
