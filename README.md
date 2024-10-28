@@ -11,7 +11,7 @@ After obtaining an API key, set the environment variable OPENAI_API_KEY to the A
 ## Installation
 This program can be installed by cloning the repository and installing the package using pip:
 ```bash
-git clone gitea@git.telosama.xyz:iang/emacs-config.git
+git clone gitea@git.telosama.xyz:iang/ragger.git
 cd ragger
 pip install .
 ```
